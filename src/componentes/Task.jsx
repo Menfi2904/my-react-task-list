@@ -1,9 +1,65 @@
-export default function Task ({ task }) {
+import { useState } from "react";
+
+function Task({ tarea, onComplete, onDelete, editTask }) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedDescription, setEditedDescription] = useState(tarea.description);
+
+  const getStyle = () => {
+    return {
+      textDecoration: tarea.completed ? "line-through" : "none",
+    };
+  };
+
+  const handleEdit = (e) => {
+    e.stopPropagation();
+    setIsEditing(true);
+  };
+
+  const handleSave = () => {
+    editTask(tarea.id, editedDescription);
+    setIsEditing(false);
+  };
+
   return (
-    <div className="inputstyle">
-      <input type="checkbox" checked={task.completada}/>
-      <span className={task.completada ? "completada" : ""} > {task.id} {task.descripcion} 
-      </span>
-      </div>
+    <div style={getStyle()} className="tareasStyle">
+      {isEditing ? (
+        <div>
+          <input
+            id="input"
+            type="text"
+            value={editedDescription}
+            onChange={(e) => setEditedDescription(e.target.value)}
+          />
+          <button onClick={handleSave} className="botonGuardar">
+            Guardar
+          </button>
+        </div>
+      ) : (
+        <>
+          <input
+            id="nombre"
+            type="checkbox"
+            checked={tarea.completed}
+            onChange={() => onComplete(tarea.id)}
+            className="cajitaDeCheck"
+          />
+          {tarea.description}
+          <img
+            src="/src/iconos/borrar.svg"
+            alt="borrar"
+            className="papelera"
+            onClick={() => onDelete(tarea.id)}
+          />
+          <img
+            src="/src/iconos/editar.svg"
+            alt="editar"
+            className="lapiz"
+            onClick={handleEdit}
+          />
+        </>
+      )}
+    </div>
   );
 }
+
+export default Task;

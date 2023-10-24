@@ -1,8 +1,7 @@
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-    background-color: #02328b;
+    background-color:#050369f1;
   }
-
 
   body {
     margin: 0; 
@@ -10,48 +9,85 @@
     justify-content: center;
     align-items: center;
     margin: 50px;
-
   }
   
   .container{
-    background-color: #fafafa;
-    border: solid blue;
+    background-color: #f09103;
+    border: solid #1a1919e8;
+    border-radius: 15px;
     display: flex;
     padding:20px;
     flex-direction: column;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    
+  }
+
+  .cajitaDeCheck{
+    width: 15px; 
+  height: 15px; 
+  margin-right: 8px;
+  font-size: 16px; 
+  }
+
+
+  .lapiz{
+    width: 25px;
+    float: right;
+    cursor: pointer;
+  }
+
+
+  .papelera{
+    width: 30px;
+    float: right;
+    cursor: pointer;
+  }
+
+  .formStyle{
+    width: 200px;
+    height: 22px;
+    background-color: #fafafaec;
+    border-radius: 5px;
   }
 
   .header{
-    color: #010764;
+    color: #020238;
   }
 
-  .inputstyle{
-    background-color: #ec9e0c;
-    border-radius: 15px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    height: 50px;
-    font-size: 20px;
+  .tareasStyle{
+    margin: 15px;
+    background-color: #0a243a;
+    border: 1px solid #0a243a;
+    border-radius: 5px;
+    color: white;
+    height:30px;
+    width:300px";
   }
 
-  input{
-    width: 50px;
-    height: 20px;
+  .botonGuardar{
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.4em;
+    font-size: 11px;
+    font-family: inherit;
+    background-color: #137418;
+    cursor: pointer;
+    margin-left:5px;
+    color: white;
   }
 
   button {
     border-radius: 8px;
     border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1em;
+    padding: 0.6em 1.4em;
+    font-size: 13px;
     font-weight: 500;
     font-family: inherit;
-    background-color: #1a1a1a;
+    background-color: #0a243a;
     cursor: pointer;
     transition: border-color 0.25s;
+    margin-left:5px;
+    color: white;
   }
   button:hover {
     border-color: #646cff;
