@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+//este componente maneja las funciones para darle estilo al completar una tarea, tambien la funcion 
+//de editar y guardar al utilizar onClick, onChange y el hook useState
+
 function Task({ tarea, onComplete, onDelete, editTask }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedDescription, setEditedDescription] = useState(tarea.description);

@@ -1,10 +1,11 @@
 import { useState } from "react";
 
+//este es el formulario para agregar una tarea
 export default function AddTask({ addNewTask }) {
   const [taskInput, setTaskInput] = useState("");
 
   const handleOnChange = (e) => {
-    setTaskInput(e.currentTarget.value);
+    setTaskInput(e.target.value);
   };
 
   const handleSubmit = (e) => {

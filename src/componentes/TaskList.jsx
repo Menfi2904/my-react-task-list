@@ -4,6 +4,8 @@ import AddTask from "./AddTask";
 import { v4 as uuidv4 } from "uuid";
 uuidv4();
 
+//este componente padre contiene las funciones que estamos exportando a los componentes hijos Task y AddTask
+
 function TaskList() {
   const [tareas, setTareas] = useState([]);
 
