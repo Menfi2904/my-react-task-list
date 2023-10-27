@@ -1,9 +1,14 @@
 export default function Task ({ task }) {
+  const getStyle = () =>{
+    return {
+      textDecoration: task.completada ? "line-through" : "none"
+    }
+  } 
+
   return (
-    <div className="inputstyle">
+    <div style={getStyle()} className="inputstyle">
       <input type="checkbox" checked={task.completada}/>
-      <span className={task.completada ? "completada" : ""} > {task.id} {task.descripcion} 
-      </span>
+      {task.descripcion}
       </div>
   );
 }
