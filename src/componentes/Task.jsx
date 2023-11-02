@@ -1,10 +1,10 @@
 import { useState } from "react";
+import { FaEdit } from "react-icons/fa";
+import { RiDeleteBin6Line } from "react-icons/Ri";
 
-//este componente maneja las funciones para darle estilo al completar una tarea, tambien la funcion 
-//de editar y guardar al utilizar onClick, onChange y el hook useState
-
-function Task({ tarea, onComplete, onDelete, editTask }) {
+function Task({ tarea, complete, deleteTask, editTask }) {
   const [isEditing, setIsEditing] = useState(false);
+  const [editedTitle, setEditedTitle] = useState(tarea.title);
   const [editedDescription, setEditedDescription] = useState(tarea.description);
 
   const getStyle = () => {
@@ -13,13 +13,14 @@ function Task({ tarea, onComplete, onDelete, editTask }) {
     };
   };
 
-  const handleEdit = (e) => {
-    e.stopPropagation();
+  const handleEdit = (event) => {
+    event.stopPropagation();
     setIsEditing(true);
   };
 
   const handleSave = () => {
-    editTask(tarea.id, editedDescription);
+    editTask(tarea.id, editedTitle, editedDescription);
+    setIsEditing(false);
     setIsEditing(false);
   };
 
@@ -28,38 +29,46 @@ function Task({ tarea, onComplete, onDelete, editTask }) {
       {isEditing ? (
         <div>
           <input
+            className="editarTareas"
+            id="input"
+            type="text"
+            value={editedTitle}
+            onChange={(event) => setEditedTitle(event.target.value)}
+          />
+          <input
+            className="editarTareas"
             id="input"
             type="text"
             value={editedDescription}
-            onChange={(e) => setEditedDescription(e.target.value)}
+            onChange={(event) => setEditedDescription(event.target.value)}
           />
           <button onClick={handleSave} className="botonGuardar">
             Guardar
           </button>
         </div>
       ) : (
-        <>
-          <input
-            id="nombre"
-            type="checkbox"
-            checked={tarea.completed}
-            onChange={() => onComplete(tarea.id)}
-            className="cajitaDeCheck"
-          />
-          {tarea.description}
-          <img
-            src="/src/iconos/borrar.svg"
-            alt="borrar"
-            className="papelera"
-            onClick={() => onDelete(tarea.id)}
-          />
-          <img
-            src="/src/iconos/editar.svg"
-            alt="editar"
-            className="lapiz"
-            onClick={handleEdit}
-          />
-        </>
+        <div>
+          <div className="title">
+            <input
+              id="nombre"
+              type="checkbox"
+              checked={tarea.completed}
+              onChange={() => complete(tarea.id)}
+              className="cajitaDeCheck"
+            />
+            {tarea.title}
+          </div>
+
+          <div className="description">
+            {tarea.description}
+            <FaEdit alt="editar" className="lapiz" onClick={handleEdit} />
+            <RiDeleteBin6Line
+              alt="borrar"
+              className="papelera"
+              onClick={() => deleteTask(tarea.id)}
+            />
+          </div>
+        </div>
       )}
     </div>
   );
