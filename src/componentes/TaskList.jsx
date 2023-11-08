@@ -1,15 +1,24 @@
 import Task from "./Task";
 import AddTask from "./AddTask";
-import useFunctions  from "../hooks/useFunctions";
+import useFunctions from "../hooks/useFunctions";
 import ClearAll from "./ClearAll";
 import TaskPending from "./TaskPending";
+import Header from "./Header";
 
-
-function TaskList() {
-const {tareas, complete, deleteTask, addNewTask, editTask, clearAllTask, tareasIncompletas} = useFunctions()
+export default function TaskList() {
+  const {
+    tareas,
+    complete,
+    deleteTask,
+    addNewTask,
+    editTask,
+    clearAllTask,
+    tareasIncompletas,
+  } = useFunctions();
 
   return (
     <div>
+      <Header />
       <AddTask addNewTask={addNewTask} />
       {tareas.map((tarea) => (
         <Task
@@ -20,11 +29,8 @@ const {tareas, complete, deleteTask, addNewTask, editTask, clearAllTask, tareasI
           editTask={editTask}
         />
       ))}
-      <ClearAll clearAllTask={clearAllTask}/>
-      <TaskPending tareasIncompletas={tareasIncompletas}/>
-
+      <ClearAll clearAllTask={clearAllTask} />
+      <TaskPending tareasIncompletas={tareasIncompletas} />
     </div>
   );
 }
-
-export default TaskList;

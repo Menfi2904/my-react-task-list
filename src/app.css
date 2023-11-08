@@ -6,6 +6,7 @@ body {
   margin: 50px;
   background-color: rgba(26, 15, 180, 0.637);
   font-family: 'Merriweather', serif;
+  color: white;
 }
 
 .containerAll {
@@ -59,10 +60,9 @@ label {
   border-radius: 15px;
   display: flex;
   width: 300px;
-  display: inline-block;
   margin-right: auto;
   margin-left: auto;
-  text-align: center;
+  justify-content: center;
 }
 
 .tareasStyle {
