@@ -1,9 +1,12 @@
 import Task from "./Task";
 import AddTask from "./AddTask";
 import useFunctions  from "../hooks/useFunctions";
+import ClearAll from "./ClearAll";
+import TaskPending from "./TaskPending";
+
 
 function TaskList() {
-const {tareas, complete, deleteTask, addNewTask, editTask} = useFunctions()
+const {tareas, complete, deleteTask, addNewTask, editTask, clearAllTask, tareasIncompletas} = useFunctions()
 
   return (
     <div>
@@ -17,6 +20,9 @@ const {tareas, complete, deleteTask, addNewTask, editTask} = useFunctions()
           editTask={editTask}
         />
       ))}
+      <ClearAll clearAllTask={clearAllTask}/>
+      <TaskPending tareasIncompletas={tareasIncompletas}/>
+
     </div>
   );
 }

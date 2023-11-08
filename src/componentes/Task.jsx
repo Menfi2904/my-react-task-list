@@ -2,6 +2,7 @@ import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin6Line } from "react-icons/Ri";
 
+
 function Task({ tarea, complete, deleteTask, editTask }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedTitle, setEditedTitle] = useState(tarea.title);
@@ -43,11 +44,12 @@ function Task({ tarea, complete, deleteTask, editTask }) {
             onChange={(event) => setEditedDescription(event.target.value)}
           />
           <button onClick={handleSave} className="botonGuardar">
-            Guardar
+            Save
           </button>
         </div>
       ) : (
         <div>
+
           <div className="title">
             <input
               id="nombre"
@@ -68,6 +70,7 @@ function Task({ tarea, complete, deleteTask, editTask }) {
               onClick={() => deleteTask(tarea.id)}
             />
           </div>
+         
         </div>
       )}
     </div>

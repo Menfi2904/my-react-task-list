@@ -16,8 +16,18 @@ export default function useFunctions() {
       })
     );
   };
+
+
+  const tareasIncompletas = () =>{
+  return tareas.filter((tarea) => !tarea.completed).length;
+  } 
+
   const deleteTask = (id) => {
     setTareas([...tareas].filter((tarea) => tarea.id !== id));
+  };
+
+  const clearAllTask = () => {
+    setTareas([]);
   };
 
   const addNewTask = (newTitle, newDescription) => {
@@ -59,5 +69,7 @@ export default function useFunctions() {
     deleteTask,
     addNewTask,
     editTask,
+    clearAllTask,
+    tareasIncompletas
   };
 }
