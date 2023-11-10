@@ -1,5 +1,6 @@
 import { RiAddBoxFill } from "react-icons/Ri";
 import { useForm } from "react-hook-form";
+import { Input, Text } from "@chakra-ui/react";
 
 export default function AddTask({ addNewTask }) {
   const {
@@ -22,37 +23,36 @@ export default function AddTask({ addNewTask }) {
   };
 
   return (
-    <form
-      className="formStyle"
-      id="form"
-      name="form"
-      onSubmit={handleSubmit(onSubmit)}
-    >
-      <label>Title</label>
-      <input
-        className="inputAgregarTareasForm"
+    <form id="form" name="form" onSubmit={handleSubmit(onSubmit)}>
+      <Input
         type="text"
         placeholder="Add a title for your task"
+        size="md"
+        variant="filled"
+        marginTop="10px"
         {...register("title", { required: true, minLength: 3 })}
         onKeyDown={handleEnterKey}
-      ></input>
+      ></Input>
       {errors.title?.type === "required" && (
-        <span className="error">Titulo es obligatorio</span>
+        <Text color="red" fontStyle="italic" fontSize="14px">
+          Titulo es obligatorio
+        </Text>
       )}
       {errors.title?.type === "minLength" && (
-        <span className="error">
+        <Text color="red" fontStyle="italic" fontSize="14px">
           Titulo debe contener al menos 3 caracteres
-        </span>
+        </Text>
       )}
 
-      <label>Description</label>
-      <input
-        className="inputAgregarTareasForm"
+      <Input
         type="text"
+        marginTop="10px"
+        marginBottom="10px"
         placeholder="Add a description for your task"
         {...register("description")}
         onKeyDown={handleEnterKey}
-      ></input>
+        variant="filled"
+      ></Input>
       <RiAddBoxFill
         type="submit"
         className="botonAgregar"

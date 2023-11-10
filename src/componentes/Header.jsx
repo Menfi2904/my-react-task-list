@@ -1,7 +1,16 @@
+import { Heading } from "@chakra-ui/react"
+
 export default function Header  ()  {
   return (
-    <div className="header">
-        <h2>TO-DO APP</h2>
+    <div>
+        <Heading 
+          fontSize='4xl'
+          as='b'
+          color="grey.300"
+        
+        >
+          TO-DO APP
+        </Heading>
     </div>
   )
 }

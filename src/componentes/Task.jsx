@@ -1,3 +1,4 @@
+import { Box, Button, Checkbox, Flex, Input } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin6Line } from "react-icons/Ri";
@@ -22,58 +23,77 @@ function Task({ tarea, complete, deleteTask, editTask }) {
   const handleSave = () => {
     editTask(tarea.id, editedTitle, editedDescription);
     setIsEditing(false);
-    setIsEditing(false);
   };
 
   return (
-    <div style={getStyle()} className="tareasStyle">
+    <Flex style={getStyle()} 
+      bg="blue.500"
+      padding="10px"
+      marginBottom="10px"
+      borderRadius="15px"
+      align="center"
+    >
       {isEditing ? (
-        <div>
-          <input
-            className="editarTareas"
-            id="input"
+        <Box>
+          <Input
+            size="md"
+            variant="flushed"
+            id="inputTitle"
             type="text"
             value={editedTitle}
             onChange={(event) => setEditedTitle(event.target.value)}
           />
-          <input
-            className="editarTareas"
-            id="input"
+          <Input
+            size="sm"
+            variant="flushed"
+            id="inputDescription"
             type="text"
             value={editedDescription}
             onChange={(event) => setEditedDescription(event.target.value)}
-          />
-          <button onClick={handleSave} className="botonGuardar">
-            Save
-          </button>
-        </div>
-      ) : (
-        <div>
-
-          <div className="title">
-            <input
-              id="nombre"
-              type="checkbox"
-              checked={tarea.completed}
-              onChange={() => complete(tarea.id)}
-              className="cajitaDeCheck"
             />
-            {tarea.title}
-          </div>
-
-          <div className="description">
-            {tarea.description}
-            <FaEdit alt="editar" className="lapiz" onClick={handleEdit} />
+          <Button 
+          onClick={handleSave} 
+          h="25px"
+          bg="green"
+          >
+            Save
+          </Button>
+        </Box>
+      ) : (
+        <Flex>
+            <Flex 
+              align="center"
+            >
+            <Checkbox
+              id="nombre"
+              colorScheme="green"
+              size="md"
+              marginRight="10px"
+              isChecked={tarea.completed}
+              onChange={() => complete(tarea.id)}
+              />
+            <Box
+            display="flex"
+            flexDirection="column"
+            >
+            <Box> {tarea.title}</Box>
+            <Box>{tarea.description}</Box>
+            </Box>
+            <Box 
+            display="flex"
+            flexDirection="row"
+            >
+            <FaEdit className="lapiz"alt="editar" onClick={handleEdit} />
             <RiDeleteBin6Line
-              alt="borrar"
               className="papelera"
+              alt="borrar"
               onClick={() => deleteTask(tarea.id)}
             />
-          </div>
-         
-        </div>
+            </Box>
+            </Flex>
+        </Flex>
       )}
-    </div>
+    </Flex>
   );
 }
 

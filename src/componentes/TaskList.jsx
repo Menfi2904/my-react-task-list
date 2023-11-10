@@ -4,6 +4,7 @@ import useFunctions from "../hooks/useFunctions";
 import ClearAll from "./ClearAll";
 import TaskPending from "./TaskPending";
 import Header from "./Header";
+import { Box, Flex } from "@chakra-ui/react";
 
 export default function TaskList() {
   const {
@@ -17,7 +18,20 @@ export default function TaskList() {
   } = useFunctions();
 
   return (
-    <div>
+    <Flex
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      h="100vh"
+      bg="blue.300"
+    >
+      <Box
+        // bg="blue.400"
+        // padding="40px"
+        // borderRadius="20px"
+        w="400px"
+      >
+
       <Header />
       <AddTask addNewTask={addNewTask} />
       {tareas.map((tarea) => (
@@ -27,10 +41,13 @@ export default function TaskList() {
           complete={complete}
           deleteTask={deleteTask}
           editTask={editTask}
-        />
-      ))}
+          />
+          ))}
       <ClearAll clearAllTask={clearAllTask} />
       <TaskPending tareasIncompletas={tareasIncompletas} />
-    </div>
+    
+      </Box>
+      
+    </Flex>
   );
 }

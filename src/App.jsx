@@ -1,24 +1,28 @@
-import TaskList from "./componentes/TaskList";
 import "./app.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import AboutUsPage from "./pages/AboutUsPage";
+import { Suspense, lazy } from "react";
 import Menu from "./componentes/Menu";
-import ErrorPage from "./pages/ErrorPage";
+
+const HomePage = lazy(() => import("./pages/HomePage"));
+const AboutUsPage = lazy(() => import("./pages/AboutUsPage"));
+const TaskList = lazy(() => import("./componentes/TaskList"));
+const ErrorPage = lazy(() => import("./pages/ErrorPage"));
 
 function App() {
   return (
-    <div className="containerAll">
-      <BrowserRouter>
-      <Menu/>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about-us" element={<AboutUsPage />} />
-          <Route path="/todo-app" element={<TaskList />} />
-          <Route path="*" element={<ErrorPage/>} />
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <Suspense fallback={<h2>Cargando...</h2>}>
+      <div>
+        <BrowserRouter>
+          <Menu />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about-us" element={<AboutUsPage />} />
+            <Route path="/todo-app" element={<TaskList />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </Suspense>
   );
 }
 

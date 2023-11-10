@@ -1,6 +1,6 @@
 export default function TaskPending({tareasIncompletas}) {
   return (
-    <div className="contadorTareasPendientes">
+    <div >
     You have {tareasIncompletas()} pending tasks
     </div>
   )
