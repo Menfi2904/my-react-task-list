@@ -17,7 +17,6 @@ export default function useFunctions() {
     );
   };
 
-
   const tareasIncompletas = () =>{
   return tareas.filter((tarea) => !tarea.completed).length;
   } 

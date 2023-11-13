@@ -1,19 +1,20 @@
+import { UnorderedList, ListItem } from "@chakra-ui/layout";
 import { Link } from "react-router-dom";
 
 export default function Menu() {
   return (
-    <nav>
-      <ul>
-        <li>
+    <nav className="menu">
+      <UnorderedList>
+        <ListItem>
           <Link to="/">Home</Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link to="/about-us">About Us</Link>
-        </li>
-        <li>
+        </ListItem>
+        <ListItem>
           <Link to="/todo-app">To-Do APP</Link>
-        </li>
-      </ul>
+        </ListItem>
+      </UnorderedList>
     </nav>
   );
 }

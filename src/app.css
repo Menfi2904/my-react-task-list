@@ -1,6 +1,10 @@
+body{
+    background-color: rgb(8, 179, 179);
+}
+
 .botonAgregar {
   cursor: pointer;
-  color:rgb(4, 62, 85);
+  color: rgb(4, 62, 85);
   height: 40px;
   width: 40px;
   display: flex;
@@ -8,17 +12,26 @@
   margin-right: auto;
 }
 
-
 .papelera {
   width: 50px;
   height: 18px;
   cursor: pointer;
   color: red;
+  position: absolute;
+  margin-left: 20px;
 }
 
 .lapiz {
   width: 40px;
   height: 15px;
   cursor: pointer;
-  color: rgb(3, 54, 54);
-} 
+  color: rgb(4, 19, 87);
+  float: right;
+  margin-right: 20px;
+}
+
+.menu {
+  margin-left: 40px;
+  font-style: italic;
+  font-weight: bold;
+}

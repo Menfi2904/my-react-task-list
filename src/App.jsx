@@ -1,8 +1,7 @@
-import "./app.css";
+import "./app.css"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import Menu from "./componentes/Menu";
-
 const HomePage = lazy(() => import("./pages/HomePage"));
 const AboutUsPage = lazy(() => import("./pages/AboutUsPage"));
 const TaskList = lazy(() => import("./componentes/TaskList"));

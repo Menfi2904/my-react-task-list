@@ -22,32 +22,22 @@ export default function TaskList() {
       direction="column"
       alignItems="center"
       justifyContent="center"
-      h="100vh"
-      bg="blue.300"
     >
-      <Box
-        // bg="blue.400"
-        // padding="40px"
-        // borderRadius="20px"
-        w="400px"
-      >
-
-      <Header />
-      <AddTask addNewTask={addNewTask} />
-      {tareas.map((tarea) => (
-        <Task
-          key={tarea.id}
-          tarea={tarea}
-          complete={complete}
-          deleteTask={deleteTask}
-          editTask={editTask}
+      <Box padding="30px" borderRadius="20px" w="400px" >
+        <Header />
+        <AddTask addNewTask={addNewTask} />
+        {tareas.map((tarea) => (
+          <Task
+            key={tarea.id}
+            tarea={tarea}
+            complete={complete}
+            deleteTask={deleteTask}
+            editTask={editTask}
           />
-          ))}
-      <ClearAll clearAllTask={clearAllTask} />
-      <TaskPending tareasIncompletas={tareasIncompletas} />
-    
+        ))}
+        <ClearAll clearAllTask={clearAllTask} />
+        <TaskPending tareasIncompletas={tareasIncompletas} />
       </Box>
-      
     </Flex>
   );
 }

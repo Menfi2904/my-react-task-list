@@ -9,12 +9,11 @@ export default function ClearAll({ clearAllTask }) {
     <Button  
       onClick={handleClearAll}
       backgroundColor="red"
-      color="white"
+      color="black"
       size="md"
       w="70px"
       h="30px"
       padding="20px"
-
     >
       Clear All
     </Button>
