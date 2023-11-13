@@ -17,11 +17,15 @@ export default function TaskList() {
     tareasIncompletas,
   } = useFunctions();
 
+ 
+
   return (
     <Flex
       direction="column"
       alignItems="center"
       justifyContent="center"
+      bg="blue.400"
+      
     >
       <Box padding="30px" borderRadius="20px" w="400px" >
         <Header />

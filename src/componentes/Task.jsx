@@ -8,7 +8,6 @@ function Task({ tarea, complete, deleteTask, editTask }) {
   const [editedTitle, setEditedTitle] = useState(tarea.title);
   const [editedDescription, setEditedDescription] = useState(tarea.description);
 
-  
   const getStyle = () => {
     return {
       textDecoration: tarea.completed ? "line-through" : "none",
@@ -25,7 +24,6 @@ function Task({ tarea, complete, deleteTask, editTask }) {
     setIsEditing(false);
   };
 
-
   return (
     <Flex
       style={getStyle()}
@@ -34,7 +32,7 @@ function Task({ tarea, complete, deleteTask, editTask }) {
       marginTop="10px"
       borderRadius="10px"
       alignItems="center"
-      bg="#2B6CB0"
+      bg="gray.300"
     >
       {isEditing ? (
         <Box>
@@ -65,14 +63,15 @@ function Task({ tarea, complete, deleteTask, editTask }) {
           <Checkbox
             id="nombre"
             colorScheme="green"
+            border="green"
             size="md"
             marginRight="10px"
             isChecked={tarea.completed}
             onChange={() => complete(tarea.id)}
           />
           <Box flex="1">
-            <Box fontWeight="bold" > {tarea.title}</Box>
-            <Box fontStyle="italic" >{tarea.description}</Box>
+            <Box fontWeight="bold"> {tarea.title}</Box>
+            <Box fontStyle="italic">{tarea.description}</Box>
           </Box>
           <Flex>
             <div>
