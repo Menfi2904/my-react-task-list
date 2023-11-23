@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, Flex, Input } from "@chakra-ui/react";
+import { Box, Button, Checkbox, Flex, Input, useColorModeValue } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { RiDeleteBin6Line } from "react-icons/Ri";
@@ -24,6 +24,9 @@ function Task({ tarea, complete, deleteTask, editTask }) {
     setIsEditing(false);
   };
 
+  const bg = useColorModeValue('blue.200', 'gray.900')
+
+
   return (
     <Flex
       style={getStyle()}
@@ -32,7 +35,7 @@ function Task({ tarea, complete, deleteTask, editTask }) {
       marginTop="10px"
       borderRadius="10px"
       alignItems="center"
-      bg="gray.300"
+      bg={bg}
     >
       {isEditing ? (
         <Box>

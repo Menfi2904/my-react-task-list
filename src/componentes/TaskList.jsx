@@ -4,7 +4,7 @@ import useFunctions from "../hooks/useFunctions";
 import ClearAll from "./ClearAll";
 import TaskPending from "./TaskPending";
 import Header from "./Header";
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, useColorModeValue } from "@chakra-ui/react";
 
 export default function TaskList() {
   const {
@@ -17,14 +17,14 @@ export default function TaskList() {
     tareasIncompletas,
   } = useFunctions();
 
- 
+  const bg = useColorModeValue('blue.400', 'gray.800')
 
   return (
     <Flex
       direction="column"
       alignItems="center"
       justifyContent="center"
-      bg="blue.400"
+      bg={bg}
       
     >
       <Box padding="30px" borderRadius="20px" w="400px" >
