@@ -5,7 +5,7 @@ import Menu from "./componentes/Menu";
 import { Box, useColorModeValue } from "@chakra-ui/react";
 import ToggleColorMode from "./componentes/ToggleColorMode";
 
-const HomePage = lazy(() => import("./pages/HomePage"));
+const Login = lazy(() => import("./pages/Login"));
 const AboutUsPage = lazy(() => import("./pages/AboutUsPage"));
 const TaskList = lazy(() => import("./componentes/TaskList"));
 const ErrorPage = lazy(() => import("./pages/ErrorPage"));
@@ -20,7 +20,7 @@ function App() {
         <BrowserRouter>
           <Menu />
           <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<Login />} />
             <Route path="/about-us" element={<AboutUsPage />} />
             <Route path="/todo-app" element={<TaskList />} />
             <Route path="*" element={<ErrorPage />} />

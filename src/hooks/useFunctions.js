@@ -1,10 +1,25 @@
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 uuidv4();
-import tareasArray from "../tareas";
+
 
 export default function useFunctions() {
-  const [tareas, setTareas] = useState(tareasArray);
+  const [tareas, setTareas] = useState([]);
+  const token = localStorage.getItem('token')
+ useEffect(() => {
+    if (token) {
+      fetch("http://localhost:5000/tasks", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "authorization": token
+        },
+      })
+      .then((response) => response.json())
+      .then((data) => setTareas(data))
+      .catch((error) => console.error(error));
+    }
+  }, [token]);
 
   const complete = (id) => {
     setTareas(
@@ -17,9 +32,9 @@ export default function useFunctions() {
     );
   };
 
-  const tareasIncompletas = () =>{
-  return tareas.filter((tarea) => !tarea.completed).length;
-  } 
+  const tareasIncompletas = () => {
+    return tareas.filter((tarea) => !tarea.completed).length;
+  };
 
   const deleteTask = (id) => {
     setTareas([...tareas].filter((tarea) => tarea.id !== id));
@@ -50,17 +65,6 @@ export default function useFunctions() {
     );
   };
 
-  useEffect(() => {
-    const storageTareas = localStorage.getItem("tareas");
-    if (storageTareas) {
-      setTareas(JSON.parse(storageTareas));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("tareas", JSON.stringify(tareas));
-    console.log("Tareas guardadas en el local storage", tareas);
-  }, [tareas]);
 
   return {
     tareas,
@@ -69,6 +73,6 @@ export default function useFunctions() {
     addNewTask,
     editTask,
     clearAllTask,
-    tareasIncompletas
+    tareasIncompletas,
   };
 }

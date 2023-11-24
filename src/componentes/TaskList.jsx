@@ -27,7 +27,7 @@ export default function TaskList() {
       bg={bg}
       
     >
-      <Box padding="30px" borderRadius="20px" w="400px" >
+      <Box padding="30px" borderRadius="20px" w="400px" bg={bg}>
         <Header />
         <AddTask addNewTask={addNewTask} />
         {tareas.map((tarea) => (

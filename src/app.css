@@ -27,7 +27,21 @@
 }
 
 .menu {
+  display: flex;
+  flex-direction: column;
   margin-left: 40px;
   font-style: italic;
   font-weight: bold;
+  font-size: larger;
+  
+}
+
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+
 }
